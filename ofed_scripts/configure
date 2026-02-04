@@ -107,6 +107,9 @@ Usage:  `basename $0` [options]
     --with-mlxfw-mod              make CONFIG_MLXFW=m [no]
     --without-mlxfw-mod           [yes]
 
+    --with-innova-flex            make CONFIG_MLX5_ACCEL=y CONFIG_MLX5_FPGA=y CONFIG_MLX5_FPGA_TOOLS=m CONFIG_MLX5_EN_TLS=y [no]
+    --without-innova-flex         [yes]
+
     --with-mlx5-ipsec             make CONFIG_MLX5_ACCEL=y CONFIG_MLX5_IPSEC=y CONFIG_MLX5_EN_IPSEC=y [no]
     --without-mlx5-ipsec          [yes]
 
@@ -909,7 +912,8 @@ CONFIG_IPOIB_VERSION=${CONFIG_IPOIB_VERSION:-''}
 # From OFED 5.3 FPGA feature disabled and inbox FPGA configs unset
 CONFIG_MLX5_FPGA_TLS=""
 CONFIG_MLX5_FPGA_IPSEC=""
-CONFIG_MLX5_FPGA=""
+CONFIG_MLX5_FPGA=${CONFIG_MLX5_FPGA:-''}
+CONFIG_MLX5_FPGA_TOOLS=${CONFIG_MLX5_FPGA_TOOLS:-''}
 
 CONFIG_INFINIBAND_IPOIB_DEBUG=${CONFIG_INFINIBAND_IPOIB_DEBUG:-''}
 CONFIG_INFINIBAND_ISER=${CONFIG_INFINIBAND_ISER:-''}
@@ -1325,6 +1329,16 @@ main()
 		--without-mlxfw-mod)
 			CONFIG_MLXFW=
 			;;
+		--with-innova-flex)
+			CONFIG_MLX5_ACCEL="y"
+			CONFIG_MLX5_EN_TLS="y"
+			CONFIG_MLX5_FPGA="y"
+			CONFIG_MLX5_FPGA_TOOLS="m"
+		;;
+		--without-innova-flex)
+			CONFIG_MLX5_FPGA=
+			CONFIG_MLX5_FPGA_TOOLS=
+		;;
 		--with-mlx5-ipsec)
 			CONFIG_MLX5_ACCEL="y"
 			CONFIG_MLX5_IPSEC="y"
@@ -1356,7 +1370,7 @@ main()
 			CONFIG_MLX5_DEBUG="y"
 			CONFIG_MLX5_ACCEL="y"
 			CONFIG_MLX5_TLS="y"
-			CONFIG_MLX5_EN_TLS="y"
+# 			CONFIG_MLX5_EN_TLS="y"
 			add_conf "# Load MLX5 modules" "MLX5_LOAD=yes"
 			;;
 		--with-mlx5-core-only-mod)
