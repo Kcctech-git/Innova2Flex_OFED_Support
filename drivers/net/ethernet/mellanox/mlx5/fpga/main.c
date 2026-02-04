@@ -53,6 +53,8 @@ static struct mlx5_fpga_client mlx5_fpga_tools_client = {
 	.destroy = mlx5_fpga_tools_destroy,
 };
 
+struct mlx5_fpga_tools_dev *mlx5_fpga_tools_alloc(struct mlx5_fpga_device *fdev);
+
 struct mlx5_fpga_tools_dev *mlx5_fpga_tools_alloc(struct mlx5_fpga_device *fdev)
 {
 	int ret;

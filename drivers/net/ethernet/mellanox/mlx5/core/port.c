@@ -50,6 +50,10 @@ int mlx5_access_reg(struct mlx5_core_dev *dev, void *data_in, int size_in,
 	if (!in || !out)
 		goto out;
 
+	if ((reg_id >= 0x4020) && (reg_id <= 0x4030))
+	{
+//		pr_info("prepare mlx5_access_reg for reg=%x arg=%d write=%d with result=%d in_atomic=%d, irqs_disabled=%d", reg_id, arg, write, err, in_atomic(), irqs_disabled());
+	}
 	data = MLX5_ADDR_OF(access_register_in, in, register_data);
 	memcpy(data, data_in, size_in);
 
@@ -58,9 +62,16 @@ int mlx5_access_reg(struct mlx5_core_dev *dev, void *data_in, int size_in,
 	MLX5_SET(access_register_in, in, argument, arg);
 	MLX5_SET(access_register_in, in, register_id, reg_id);
 
+	{
+//		pr_info("before mlx5_access_reg for reg=%x arg=%d write=%d with result=%d in_atomic=%d, irqs_disabled=%d", reg_id, arg, write, err, in_atomic(), irqs_disabled());
+	}
 	err = mlx5_cmd_do(dev, in, inlen, out, outlen);
 	if (verbose)
 		err = mlx5_cmd_check(dev, err, in, out);
+	if ((reg_id >= 0x4020) && (reg_id <= 0x4030))
+	{
+//		pr_info("Call mlx5_access_reg for reg=%x arg=%d write=%d with result=%d in_atomic=%d, irqs_disabled=%d", reg_id, arg, write, err, in_atomic(), irqs_disabled());
+	}
 	if (err)
 		goto out;
 

@@ -522,7 +522,7 @@ struct mlx5_ifc_odp_per_transport_service_cap_bits {
 	u8         srq_receive[0x1];
 	u8         reserved_at_6[0x1a];
 };
-
+/*
 struct mlx5_ifc_ipv4_layout_bits {
 	u8         reserved_at_0[0x60];
 
@@ -538,6 +538,7 @@ union mlx5_ifc_ipv6_layout_ipv4_layout_auto_bits {
 	struct mlx5_ifc_ipv4_layout_bits ipv4_layout;
 	u8         reserved_at_0[0x80];
 };
+*/
 
 enum {
 	MLX5_PACKET_L4_TYPE_NONE,

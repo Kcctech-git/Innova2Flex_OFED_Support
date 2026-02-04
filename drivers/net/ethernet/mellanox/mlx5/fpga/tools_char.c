@@ -398,7 +398,8 @@ int mlx5_fpga_tools_char_init(void)
 	}
 	pr_debug("mlx5_fpga_tools major number is %d\n", major_number);
 
-	char_class = class_create(THIS_MODULE, MLX5_FPGA_TOOLS_DRIVER_NAME);
+char_class = class_create(MLX5_FPGA_TOOLS_DRIVER_NAME);
+//	char_class = class_create(THIS_MODULE, MLX5_FPGA_TOOLS_DRIVER_NAME);
 	if (IS_ERR(char_class)) {
 		ret = PTR_ERR(char_class);
 		pr_err("Failed to create char class: %d\n", ret);

@@ -77,7 +77,7 @@
 #include "lag/lag.h"
 
 MODULE_AUTHOR("Eli Cohen <eli@mellanox.com>");
-MODULE_DESCRIPTION("Mellanox 5th generation network adapters (ConnectX series) core driver");
+MODULE_DESCRIPTION("Patched by Kcc, Mellanox 5th generation network adapters (ConnectX series) core driver");
 MODULE_LICENSE("Dual BSD/GPL");
 MODULE_VERSION(DRIVER_VERSION);
 MODULE_INFO(basedon, "Korg 6.8-rc4");
