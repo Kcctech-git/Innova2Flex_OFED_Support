@@ -862,7 +862,8 @@ static int mlx5_fpga_conn_connect(struct mlx5_fpga_conn *conn)
 {
 	struct mlx5_fpga_device *fdev = conn->fdev;
 	int err;
-
+	(void)fdev; /* Suppress warning about unused variable */
+	
 	MLX5_SET(fpga_qpc, conn->fpga_qpc, state, MLX5_FPGA_QPC_STATE_ACTIVE);
 	err = mlx5_fpga_modify_qp(conn->fdev->mdev, conn->fpga_qpn,
 				  MLX5_FPGA_QPC_STATE, &conn->fpga_qpc);

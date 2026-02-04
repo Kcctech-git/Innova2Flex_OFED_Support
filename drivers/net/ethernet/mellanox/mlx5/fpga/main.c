@@ -80,7 +80,7 @@ out:
 	return tdev;
 }
 
-void mlx5_fpga_tools_free(struct mlx5_fpga_tools_dev *tdev)
+static void mlx5_fpga_tools_free(struct mlx5_fpga_tools_dev *tdev)
 {
 	mlx5_fpga_tools_char_remove_one(tdev);
 	kfree(tdev);

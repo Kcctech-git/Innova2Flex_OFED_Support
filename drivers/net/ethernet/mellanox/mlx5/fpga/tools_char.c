@@ -214,7 +214,7 @@ static loff_t tools_char_llseek(struct file *filep, loff_t offset, int whence)
 	return new_offset;
 }
 
-long tools_char_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
+static long tools_char_ioctl(struct file *filep, unsigned int cmd, unsigned long arg)
 {
 	int err = 0;
 	struct file_context *context = filep->private_data;
